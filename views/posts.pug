@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1.text-center= title
+  ul
+    each post, i in posts
+      h3= `Post ${post.id}: ${post.title}`
+      p= post.body
+      a(href='/posts/' + post.id) View post..
+      hr

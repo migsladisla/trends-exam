@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1.text-center= title
+  ul
+    each photo, i in album
+      h3= `Photo: ${photo.title}`
+      img(src=photo.thumbnailUrl)
+      br
+      a(target='_blank' href=photo.url) See original photo..
+      hr

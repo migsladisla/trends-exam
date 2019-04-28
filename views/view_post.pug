@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1.text-center= title
+    h3= `Post ${post.id}: ${post.title}`
+    p= post.body
+    a(href='/posts/' + post.id + '/comments') View comments..

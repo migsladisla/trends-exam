@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1.text-center= title
+  ul
+    each comm, i in comms
+      h3= 'Name: ' + comm.name
+      h4= 'Email: ' + comm.email
+      p= comm.body
+      hr
