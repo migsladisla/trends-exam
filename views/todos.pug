@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1.text-center= title
+  ul
+    each todo, i in todos
+      each user, i in fakeUsers
+        if todo.userId == user.id
+          h3= `${todo.id}. ${todo.title} by ${user.name}`
+          a(href='/users/' + user.id)="View user profile.."
+          if !todo.completed
+            p Not completed
+          else 
+            p Completed
+          hr

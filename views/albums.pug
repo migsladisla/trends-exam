@@ -4,6 +4,8 @@ block content
   h1.text-center= title
   ul
     each album, i in albums
-      h3= `Album ${album.id}: ${album.title}`
-      a(href='/albums/' + album.id + '/photos') View photos..
-      hr
+      each user, i in fakeUsers
+        if album.userId == user.id
+          h3= `Album ${album.id}: ${album.title} by ${user.name}`
+          a(href='/albums/' + album.id + '/photos') View photos..
+          hr

@@ -4,9 +4,6 @@ block content
   h1.text-center= title
   ul
     each user, i in users
-      h3= user.name
-      h5= user.username + ' - ' + user.email + ' / Visit my website: ' + user.website
-      h5= `Contact: ${user.phone}`
-      p= `Lives in ${user.address.suite}, ${user.address.street}, ${user.address.city}, ${user.address.zipcode}` 
-      p= `Works at ${user.company.name}, ${user.company.catchPhrase}, ${user.company.bs}` 
+      a(href='users/'+user.id)=user.name
+      h5= `From ${user.address.city}`
       hr

@@ -40,6 +40,10 @@ var fakePhotos = fetch(`${fakeApi}photos`)
 var fakeComm  = fetch(`${fakeApi}comments`)
                 .then((res) => res.json())
                 .then((data) => fakeComm = data)
+
+var fakeTodos  = fetch(`${fakeApi}todos`)
+                .then((res) => res.json())
+                .then((data) => fakeTodos = data)
      
 // Users route
 app.get('/users', (req, res) => {
@@ -47,19 +51,44 @@ app.get('/users', (req, res) => {
     title: 'Trends Exam - Users',
     users: fakeUsers
   });
-});                
+});
+
+// Single user route
+app.get('/users/:id', (req, res) => {
+  let user = fakeUsers.find(u => u.id === parseInt(req.params.id));
+  if (!user) res.status(404).send('The user with the given ID was not found.');
+  
+  res.render('view_user', {
+    title: 'Trends Exam - View User',
+    user
+  });
+});
 
 // Posts route
 app.get('/posts', (req, res) => {
-  res.render('posts', {
-    title: 'Trends Exam - Posts',
-    posts: fakePosts
-  });
+  var query = req.query.userId;
+  if(query == '') {
+    res.status(404).send('Not Found.');
+  } else if(!req.query.userId) {
+    res.render('posts', {
+      title: 'Trends Exam - Posts',
+      posts: fakePosts,
+      fakeUsers
+    });
+  } else {
+    let userPosts = fakePosts.filter(u => u.userId === parseInt(req.query.userId));
+    if (userPosts.length == 0) res.status(404).send('The post with the given user ID was not found.');
+
+    res.render('user_posts', {
+      title: `Trends Exam - User Posts`,
+      userPosts
+    });
+  }
 });
 
 // Single post route
 app.get('/posts/:id', (req, res) => {
-  let post = fakePosts.find(p => p.id === parseInt(req.params.id));
+  const post = fakePosts.find(p => p.id === parseInt(req.params.id));
   if (!post) res.status(404).send('The post with the given ID was not found.');
   
   res.render('view_post', {
@@ -72,7 +101,8 @@ app.get('/posts/:id', (req, res) => {
 app.get('/albums', (req, res) => {
   res.render('albums', {
     title: 'Trends Exam - Albums',
-    albums: fakeAlbums
+    albums: fakeAlbums,
+    fakeUsers
   });
 });
 
@@ -94,7 +124,17 @@ app.get('/posts/:postId/comments', (req, res) => {
 
   res.render('view_comments', {
     title: 'Trends Exam - View Comments',
-    comms
+    comms,
+    fakeUsers
+  });
+});
+
+// Todos route
+app.get('/todos', (req, res) => {
+  res.render('todos', {
+    title: 'Trends Exam - Todos',
+    todos: fakeTodos,
+    fakeUsers
   });
 });
 
