@@ -5,25 +5,19 @@ block content
   header#showcase.grid
     div.bg-image
     div.content-wrap
-      h1(data-aos="zoom-in" data-aos-duration="1250" style="font-weight: bold") MY FIRST NODE WEBSITE.
-      p(data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500" class="header-text") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur soluta exercitationem repellendus laboriosam totam consequuntur ullam similique quibusdam neque voluptas?
-      a.btn(href="#section-b" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500") See more 
+      h1.content-small(data-aos="zoom-in" data-aos-duration="500" style="font-weight: bold") HELLO, WORLD.
+      div(data-aos="zoom-in" data-aos-duration="500" style="font-weight: bold; font-size: 4em; color: #aae8a4; letter-spacing: 4px") My First NodeJS App.
+      a.btn(href="#section-a" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500") See more 
 
   // Main
   main#id
-    // Section C
-    section#section-c.grid
-      div.content-wrap
-        h2.content-title Hello, my name is MIGS
-        p I like web programming. I'm experienced in front-end and back-end development. I'm a recent graduate of Information Technology with a Bachelor's Degree.
-
     // Section A
     section#section-a.grid
       div.content-wrap
-        h2.content-title(data-aos="zoom-out" data-aos-duration="1500") This Is My Trends Exam
+        h2.content-title(data-aos="zoom-out" data-aos-duration="500" style="color: #5e5e5e; letter-spacing: 1.2px") This is my technical exam at Trends & Technologies Inc.
         div.content-text(data-aos="fade-up"
-     data-aos-anchor-placement="bottom-bottom" data-aos-duration="1500")
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum illo fugiat, eius eos itaque quidem iusto obcaecati rem asperiores totam tempore vitae provident sequi cupiditate beatae? Magni odit qui cumque ducimus ad maxime earum eligendi sint obcaecati, ab commodi vero unde, rerum accusamus explicabo libero facilis est natus nesciunt harum!
+     data-aos-anchor-placement="bottom-bottom" data-aos-duration="500")
+          p I was assigned to create a website that will utilize all methods in this <a href="https://jsonplaceholder.typicode.com/" target="_blank" style="text-decoration: none; color: #00aff0">free online API</a> using <span style="color: #aae8a4">NodeJS</span> and <span style="color: #5e5e5e">ExpressJS</span>. I studied about them and learned that <span style="color: #aae8a4">NodeJS</span> isn't a JavaScript framework but a JavaScript run-time environment that runs JavaScript in the server-side and <span style="color: #5e5e5e">ExpressJS</span> being its framework. The single-threaded event-driven system is fast even when handling lots of requests at once compared to others, besides of it being synchronous. It also supports thousands of packages/modules to make coding easier. Please click any button down below to explore my work.
 
     // Section B
     section#section-b.grid
@@ -34,27 +28,23 @@ block content
           div.card
             img(src="https://i.imgur.com/mXOASDz.jpg" alt="")
             div.card-content
-              h3.card-title: a.btn-redirect(href="/users") Users
+              h3.card-title: a.btn-redirect(href="/users") Users <i class="fas fa-arrow-right"></i>
               p This is where you'll see all the registered users. Please click the button to view.
         li(data-aos="flip-down" data-aos-duration="900")
           div.card
             img(src="https://i.imgur.com/OOk4kYg.jpg" alt="")
             div.card-content
-              h3.card-title: a.btn-redirect(href="/posts") Posts
+              h3.card-title: a.btn-redirect(href="/posts") Posts <i class="fas fa-arrow-right"></i>
               p Check out our main content design. This is what you'll actually see when logged in. Please click the button to view.
         li(data-aos="flip-down" data-aos-duration="1000")
           div.card
             img(src="https://i.imgur.com/n5mmGCJ.jpg" alt="")
             div.card-content
-              h3.card-title: a.btn-redirect(href="/albums") Albums
+              h3.card-title: a.btn-redirect(href="/albums") Albums <i class="fas fa-arrow-right"></i>
               p And here, is where you can see all uploaded albums. Please click the button to view.
 
     // Section D
     section#section-d.grid
-      div.box
-        h2.content-title Contact Me
-        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui impedit rem quibusdam? Quod architecto magnam debitis facere harum, porro mollitia.
-        p migsexam@trends.com.ph
       div.box
         h2.content-title About Me
         p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui impedit rem quibusdam? Quod architecto magnam debitis facere harum, porro mollitia.
@@ -62,20 +52,44 @@ block content
     // Section E
     section#section-e.grid
       div.content-wrap
-        h2.content-title LET'S GET SOCIAL
-        a(href="https://facebook.com/migsladisla" target="_blank")
-          i.social-icons.fab.fa-facebook-f(style="color: #3b5998")
-        a(href="https://twitter.com/migsladisla" target="_blank")
-          i.social-icons.fab.fa-twitter(style="color: #00acee")
-        a(href="https://linkedin.com/in/migsladisla" target="_blank")
-          i.social-icons.fab.fa-linkedin-in(style="color: #0077B5")
-        a(href="https://github.com/migsladisla" target="_blank")
-          i.social-icons.fab.fa-github(style="color: #9cdaf1")
-        p Add me up. Follow me. Connect with me.
+        h2.content-title(style="color: rgba(0,0,0,0.7)" data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="500") Contact Me 
+          i.far.fa-envelope(style="color: #1ed760")
+        p(data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="500") Do you have an idea or simply want to chat? I'd love to hear from you.
+        input(type="text", name="name", placeholder="Name.." data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="800")
+        input(type="email", name="email" placeholder="Email.." data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="800")
+        textarea(name="msg", cols="30", rows="8" placeholder="Just kidding. This isn't working." data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="1000")
+        h3.card-title: a.btn-redirect(href="#", style="letter-spacing: 3px" data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="1000") Submit
+        h3.content-title(data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom") Or 
+        h2.content-title(style="color: rgba(0,0,0,0.7)" data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom") Let's Get Social 
+          i.fas.fa-arrow-circle-right(style="color: #db4437")
+        div(data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom" data-aos-duration="700")
+          a(href="https://facebook.com/migsladisla" target="_blank")
+            i.social-icons.fab.fa-facebook-f(style="color: #3b5998")
+          a(href="https://twitter.com/migsladisla" target="_blank")
+            i.social-icons.fab.fa-twitter(style="color: #00acee")
+          a(href="https://linkedin.com/in/migsladisla" target="_blank")
+            i.social-icons.fab.fa-linkedin-in(style="color: #0077B5")
+          a(href="https://github.com/migsladisla" target="_blank")
+            i.social-icons.fab.fa-github(style="color: #9cdaf1")
+          p(data-aos="zoom-in" data-aos-duration="1000") Add me. Follow me. Connect with me.
 
     // Footer
     footer#main-footer.grid
-      div &copy; Juan Miguel Ladisla. All Rights Reserved | Trends and Technologies
+      div Copyright &copy; Juan Miguel Ladisla 
+      div Trends and Technologies Inc.
+      div(style="font-size: 0.8em; margin-top: 1em") Made with 
+        i.fab.fa-node-js(style="color: #68a063; font-size: 1.5em")
+      div(style="font-size: 0.8em") ExpressJS and CSS3
+          
 
   
   

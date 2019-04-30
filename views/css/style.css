@@ -4,10 +4,11 @@ html, body {
   font-family: 'Questrial', sans-serif;
   font-size: 1.1em;
   color: #fff;
-  background: #cccccc;
+  background: #f3f3f3;
   line-height: 1.5;
   text-align: center;
   height: 100%;
+  text-shadow: 0.8px 0.8px 0.8px rgba(0, 0, 0, 0.1);
 }
 
 img {
@@ -42,12 +43,17 @@ p {
   padding: 1em 0;
 }
 
+#showcase .content-small {
+  letter-spacing: 4px;
+  font-size: 1.5em;
+}
+
 .btn {
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
-  padding: 0.7em 1em;
-  margin-top: 2em;
+  padding: 0.7em 1.5em;
+  margin-top: 5em;
   color: #fff;
   background: transparent;
   border: 1px solid #fff;
@@ -56,9 +62,9 @@ p {
 
 .btn:hover {
   background: #dadada41;
-  color: #a7ddff;
+  color: #aae8a4;
   border-radius: 50px;
-  border-color: #a7ddff;
+  border-color: gray;
   transition: all 0.1s ease 0s;
 }
 
@@ -88,7 +94,7 @@ p {
 #showcase {
   height: 100%;
   color: #fff;
-  text-align: left;
+  text-align: center;
   letter-spacing: 1.5px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
@@ -102,7 +108,7 @@ p {
   width: 100%;
   height: 100%;
   opacity: 0.7;
-  filter: brightness(65%);
+  filter: brightness(85%);
 }
 
 #showcase h1 {
@@ -122,15 +128,15 @@ p {
 /* Section A */
 
 #section-a {
-  background: #eaeaea;
+  background: #fff;
   color: #838484;
-  padding-bottom: 2em;
+  padding: 2em 0 3em;
 }
 
 /* Section B */
 
 #section-b {
-  padding: 2em 1em 2em;
+  padding: 3em 1em 2em;
 }
 
 #section-b ul {
@@ -187,19 +193,97 @@ p {
   letter-spacing: 2px;
 }
 
+input {
+  width: 80%;
+  padding: 1em 1em;
+  margin: 1em 0.8em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+textarea {
+  width: 80%;
+  padding: 1em 1em;
+  margin: 0.5em 0.8em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+::-webkit-input-placeholder {
+  font-family: 'Questrial', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 0.5px;
+  color: rgb(182, 182, 182);
+}
+
 /* Footer */
 
 #main-footer {
-  padding: 1.6em;
+  padding: 1.5em;
   background: rgb(238, 238, 238);
   color: rgb(109, 109, 109);
   text-align: center;
-  font-size: 0.7em;
+  font-size: 0.9em;
 }
 
 #main-footer a {
   color: #2690d4;
   text-decoration: none;
+}
+
+/* For static pages */
+
+hr {
+  margin-top: 0;
+  border: 0;
+  height: 1px;
+  background: rgb(151, 151, 151);
+}
+
+.ahref {
+  color: #1da1f2;
+  text-decoration: none;
+}
+
+.board {
+  margin: 1em 0;
+  padding: 1em 1em;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.board:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.btn-view {
+  cursor: pointer;
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5em 1.3em;
+  color: #fff;
+  background: #1da1f2;
+  border-radius: 50px;
+}
+
+.btn-view:hover {
+  background: #dadada;
+  color: #1da1f2;
+  border-radius: 6px;
+  transition: all 0.4s ease 0s;
+}
+
+.page-grid {
+  padding-right: 2em;
 }
 
 /* Media Queries */
@@ -210,9 +294,15 @@ p {
     grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
   }
 
+  .page-grid {
+    display: grid;
+    padding: 0 6em;
+    grid-template-columns: 1fr;
+  }
+
   #section-a .content-text {
     columns: 2;
-    column-gap: 2em
+    column-gap: 2em;
   }
 
   #section-a .content-text p {
@@ -224,8 +314,16 @@ p {
     grid-column: 2/4;
   }
 
+  input {
+    width: 60%;
+  }
+  
+  textarea {
+    width: 60%;
+  }
+
   .box {
-    grid-column: span 2;
+    grid-column: span 4;
   }
 
   #main-footer div {
@@ -248,6 +346,11 @@ p {
     grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
   }
 
+  #showcase h1 {
+    padding-top: 30vh;
+    padding-bottom: 0;
+  }
+
   #section-a .content-text {
     columns: 2;
     column-gap: 2em
@@ -260,6 +363,14 @@ p {
   .content-wrap, 
   #section-b ul {
     grid-column: 2/4;
+  }
+
+  input {
+    width: 30%;
+  }
+  
+  textarea {
+    width: 63%;
   }
 
   .box, #main-footer div {
