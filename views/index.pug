@@ -1,11 +1,92 @@
 extends layout
 
 block content
-  h1.text-center= title
-  a(href='/users') View users..
-  br
-  a(href='/posts') View posts..
-  br
-  a(href='/albums') View albums..
-  br
-  a(href='/todos') View todos..
+  // Header
+  header#showcase.grid
+    div.bg-image
+    div.content-wrap
+      h1(data-aos="zoom-in" data-aos-duration="1250" style="font-weight: bold") MY FIRST NODE WEBSITE.
+      p(data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500" class="header-text") Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur soluta exercitationem repellendus laboriosam totam consequuntur ullam similique quibusdam neque voluptas?
+      a.btn(href="#section-b" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="1500") See more 
+
+  // Main
+  main#id
+    // Section C
+    section#section-c.grid
+      div.content-wrap
+        h2.content-title Hello, my name is MIGS
+        p I like web programming. I'm experienced in front-end and back-end development. I'm a recent graduate of Information Technology with a Bachelor's Degree.
+
+    // Section A
+    section#section-a.grid
+      div.content-wrap
+        h2.content-title(data-aos="zoom-out" data-aos-duration="1500") This Is My Trends Exam
+        div.content-text(data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom" data-aos-duration="1500")
+          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum illo fugiat, eius eos itaque quidem iusto obcaecati rem asperiores totam tempore vitae provident sequi cupiditate beatae? Magni odit qui cumque ducimus ad maxime earum eligendi sint obcaecati, ab commodi vero unde, rerum accusamus explicabo libero facilis est natus nesciunt harum!
+
+    // Section B
+    section#section-b.grid
+      div.bg-image
+      div.card-wrap
+      ul
+        li(data-aos="flip-down" data-aos-duration="1500")
+          div.card
+            img(src="https://i.imgur.com/mXOASDz.jpg" alt="")
+            div.card-content
+              h3.card-title: a.btn-redirect(href="/users") Users
+              p This is where you'll see all the registered users. Please click the button to view.
+        li(data-aos="flip-down" data-aos-duration="900")
+          div.card
+            img(src="https://i.imgur.com/OOk4kYg.jpg" alt="")
+            div.card-content
+              h3.card-title: a.btn-redirect(href="/posts") Posts
+              p Check out our main content design. This is what you'll actually see when logged in. Please click the button to view.
+        li(data-aos="flip-down" data-aos-duration="1000")
+          div.card
+            img(src="https://i.imgur.com/n5mmGCJ.jpg" alt="")
+            div.card-content
+              h3.card-title: a.btn-redirect(href="/albums") Albums
+              p And here, is where you can see all uploaded albums. Please click the button to view.
+
+    // Section D
+    section#section-d.grid
+      div.box
+        h2.content-title Contact Me
+        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui impedit rem quibusdam? Quod architecto magnam debitis facere harum, porro mollitia.
+        p migsexam@trends.com.ph
+      div.box
+        h2.content-title About Me
+        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui impedit rem quibusdam? Quod architecto magnam debitis facere harum, porro mollitia.
+
+    // Section E
+    section#section-e.grid
+      div.content-wrap
+        h2.content-title LET'S GET SOCIAL
+        a(href="https://facebook.com/migsladisla" target="_blank")
+          i.social-icons.fab.fa-facebook-f(style="color: #3b5998")
+        a(href="https://twitter.com/migsladisla" target="_blank")
+          i.social-icons.fab.fa-twitter(style="color: #00acee")
+        a(href="https://linkedin.com/in/migsladisla" target="_blank")
+          i.social-icons.fab.fa-linkedin-in(style="color: #0077B5")
+        a(href="https://github.com/migsladisla" target="_blank")
+          i.social-icons.fab.fa-github(style="color: #9cdaf1")
+        p Add me up. Follow me. Connect with me.
+
+    // Footer
+    footer#main-footer.grid
+      div &copy; Juan Miguel Ladisla. All Rights Reserved | Trends and Technologies
+
+  
+  
+  
+  
+  
+  
+  //- a(href='/users') View users..
+  //- br
+  //- a(href='/posts') View posts..
+  //- br
+  //- a(href='/albums') View albums..
+  //- br
+  //- a(href='/todos') View todos..

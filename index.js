@@ -6,14 +6,14 @@ const path = require('path');
 const app = express();
 
 // Load view engine
-app.engine('pug', require('pug').__express)
-app.set('public', path.join(__dirname, 'public'));
+app.engine('pug', require('pug').__express);
+app.set('public', path.join(__dirname + '/public'));
 app.set('view engine', 'pug');
 
 // Home route
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'Trends Exam'
+    title: 'My First Node Website'
   });
 });
 
@@ -44,7 +44,7 @@ var fakeComm  = fetch(`${fakeApi}comments`)
 var fakeTodos  = fetch(`${fakeApi}todos`)
                 .then((res) => res.json())
                 .then((data) => fakeTodos = data)
-     
+
 // Users route
 app.get('/users', (req, res) => {
   res.render('users', {

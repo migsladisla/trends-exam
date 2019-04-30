@@ -2,12 +2,14 @@ doctype html
 html
   head
     title #{title}
+    link(link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet")
+    link(rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css")
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous")
     style
       include css/style.css
   body
-    .container
-      block content
-      br
-      hr
-      footer
-        p.text-center Copyright &copy; 2019
+    block content
+    script(type='text/javascript' src="https://unpkg.com/aos@2.3.1/dist/aos.js")
+    script(type='text/javascript' src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous")
+    <script>AOS.init();</script>
+      
