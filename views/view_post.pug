@@ -1,7 +1,25 @@
 extends layout
 
 block content
-  h1.text-center= title
-    h3= `Post ${post.id}: ${post.title}`
-    p= post.body
-    a(href='/posts/' + post.id + '/comments') View comments..
+  body.cover(style="color: #444444; text-align: left")
+  div.page-grid-col
+  h1(style="letter-spacing: 2px" data-aos="zoom-in")= title
+    i.fas.fa-quote-right(style="margin-left: 12px; color: #1da1f2" data-aos="fade-left" data-aos-duration="800")
+    -var id = post.id;
+    p(style="padding: 0; font-size: 0.4em; letter-spacing: normal") Fetched from <a class="ahref" target="_blank" href="https://jsonplaceholder.typicode.com/posts">https://jsonplaceholder.typicode.com/posts/:id</a>
+  div.board(data-aos="fade-up"
+  data-aos-anchor-placement="bottom-bottom" data-aos-duration="800")
+    div.card-content
+      a.ahref(href=`/users/${user.id}`)=user.name
+                i.fas.fa-check-circle(style="margin-left: 4px" data-aos="fade-left" data-aos-duration="800")
+      h3(style="padding-top: 5px")= `Post ${post.id}: ${post.title}`
+      <hr>
+      p= post.body
+      h3(style="padding: 0; padding-top: 10px").card-title: a.btn-view(href='/posts/' + post.id + '/comments') View comments <i class="fas fa-arrow-right"></i>
+      
+  footer(style="background: #f3f3f3")#main-footer
+    div Copyright &copy; Juan Miguel Ladisla 
+    div Trends and Technologies Inc.
+    div(style="font-size: 0.8em; margin-top: 1em") Made with 
+      i.fab.fa-node-js(style="color: #68a063; font-size: 1.5em")
+    div(style="font-size: 0.8em") ExpressJS and CSS3

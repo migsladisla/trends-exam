@@ -1,11 +1,26 @@
 extends layout
 
 block content
-  h1.text-center= title
+  body.cover(style="color: #444444; text-align: left")
+  div.page-grid-col
+  h1(style="letter-spacing: 2px" data-aos="zoom-in")= title
+    i.fas.fa-user(style="margin-left: 12px; color: #1da1f2" data-aos="fade-left" data-aos-duration="800")
+    i.fas.fa-portrait(style="margin-left: 12px; color: #1da1f2" data-aos="fade-left" data-aos-duration="800")
+    p(style="padding: 0; font-size: 0.4em; letter-spacing: normal") Fetched from <a class="ahref" target="_blank" href="https://jsonplaceholder.typicode.com/photos">https://jsonplaceholder.typicode.com/albums/:id/photos</a>
   ul
+  div.wrapper
     each photo, i in album
-      h3= `${photo.id} Photo: ${photo.title}`
-      img(src=photo.thumbnailUrl)
-      br
-      a(target='_blank' href=photo.url) See original photo..
-      hr
+      div.board(data-aos="fade-up" data-aos-duration="800")
+        div.card-content
+          h3(style="padding: 0; padding-top: 10px").card-title: a.btn-view(href=photo.url target="_blank") See original photo <i class="fas fa-arrow-right"></i>
+          h3= `Photo ${photo.id}: ${photo.title}`
+          p Image preview:
+          img(style="width: 100px; height: auto" src=photo.thumbnailUrl)
+
+  footer(style="background: #f3f3f3")#main-footer
+    div Copyright &copy; Juan Miguel Ladisla 
+    div Trends and Technologies Inc.
+    div(style="font-size: 0.8em; margin-top: 1em") Made with 
+      i.fab.fa-node-js(style="color: #68a063; font-size: 1.5em")
+    div(style="font-size: 0.8em") ExpressJS and CSS3
+          

@@ -9,6 +9,7 @@ html, body {
   text-align: center;
   height: 100%;
   text-shadow: 0.8px 0.8px 0.8px rgba(0, 0, 0, 0.1);
+  scroll-behavior: smooth;
 }
 
 img {
@@ -107,8 +108,8 @@ p {
   background-size: cover;
   width: 100%;
   height: 100%;
-  opacity: 0.7;
-  filter: brightness(85%);
+  opacity: 0.9;
+  filter: brightness(65%);
 }
 
 #showcase h1 {
@@ -172,13 +173,31 @@ p {
 
 /* Section D */
 
+#section-d .content-title {
+  letter-spacing: 2px;
+}
+
+#section-d .about-img {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  filter: brightness(100%);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#section-d p {
+  margin: 1em 0;
+}
+
 #section-d .box{
   padding: 2em;
   color: #fff;
 }
 
-#section-d .box:first-child {
-  background: #2690d4;
+#section-d .box {
+  background: #83dd7b;;
 }
 
 /* Section E */
@@ -237,7 +256,7 @@ textarea {
   text-decoration: none;
 }
 
-/* For static pages */
+/* Posts */
 
 hr {
   margin-top: 0;
@@ -284,6 +303,26 @@ hr {
 
 .page-grid {
   padding-right: 2em;
+}
+
+/* Users */
+
+.cover {
+  padding: 0 2em;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.wrapper > div {
+  background: #eee;
+  padding: 1em;
+}
+
+.wrapper > div:nth-child(odd) {
+  background: rgb(231, 231, 231);
 }
 
 /* Media Queries */
@@ -338,6 +377,13 @@ hr {
   #section-b li {
     width: 31%;
   }
+
+  /* Users */
+  .wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 1em;
+  }
 }
 
 @media(min-width: 1366px) {
@@ -373,6 +419,10 @@ hr {
     width: 63%;
   }
 
+  #section-d p {
+    margin: 1em 20em;
+  }
+
   .box, #main-footer div {
     grid-column: span 4;
   }
@@ -380,5 +430,16 @@ hr {
   #section-b ul {
     display: flex;
     justify-content: space-around;
+  }
+
+  /* Users */
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+  }
+
+  .cover {
+    padding: 0 8em;
   }
 }

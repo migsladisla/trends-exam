@@ -13,7 +13,7 @@ app.set('view engine', 'pug');
 // Home route
 app.get('/', (req, res) => {
   res.render('index', {
-    title: 'My First Node Website'
+    title: 'My First Node Website - Exam'
   });
 });
 
@@ -48,7 +48,7 @@ var fakeTodos  = fetch(`${fakeApi}todos`)
 // Users route
 app.get('/users', (req, res) => {
   res.render('users', {
-    title: 'Trends Exam - Users',
+    title: 'Users',
     users: fakeUsers
   });
 });
@@ -59,7 +59,7 @@ app.get('/users/:id', (req, res) => {
   if (!user) res.status(404).send('The user with the given ID was not found.');
   
   res.render('view_user', {
-    title: 'Trends Exam - View User',
+    title: user.name + "'s Info",
     user
   });
 });
@@ -71,16 +71,17 @@ app.get('/posts', (req, res) => {
     res.status(404).send('Not Found.');
   } else if(!req.query.userId) {
     res.render('posts', {
-      title: 'Trends Exam - Posts',
+      title: 'Posts',
       posts: fakePosts,
       fakeUsers
     });
   } else {
     let userPosts = fakePosts.filter(u => u.userId === parseInt(req.query.userId));
+    const user = fakeUsers.find(u => u.id === userPosts[0].userId);
     if (userPosts.length == 0) res.status(404).send('The post with the given user ID was not found.');
 
     res.render('user_posts', {
-      title: `Trends Exam - User Posts`,
+      title: user.name + "'s Posts",
       userPosts
     });
   }
@@ -89,30 +90,48 @@ app.get('/posts', (req, res) => {
 // Single post route
 app.get('/posts/:id', (req, res) => {
   const post = fakePosts.find(p => p.id === parseInt(req.params.id));
+  const user = fakeUsers.find(p => p.id === post.userId);
   if (!post) res.status(404).send('The post with the given ID was not found.');
   
   res.render('view_post', {
-    title: 'Trends Exam - View Post',
-    post
+    title: user.name + "'s Post",
+    post,
+    user
   });
 });
 
 // Albums route
 app.get('/albums', (req, res) => {
-  res.render('albums', {
-    title: 'Trends Exam - Albums',
-    albums: fakeAlbums,
-    fakeUsers
-  });
+  var query = req.query.userId;
+  if(query == '') {
+    res.status(404).send('Not Found.');
+  } else if(!req.query.userId) {
+    res.render('albums', {
+      title: 'Albums',
+      albums: fakeAlbums,
+      fakeUsers
+    });
+  } else {
+    let userAlbums = fakeAlbums.filter(a => a.userId === parseInt(req.query.userId));
+    const user = fakeUsers.find(u => u.id === userAlbums[0].userId);
+    if (userAlbums.length == 0) res.status(404).send('The post with the given user ID was not found.');
+
+    res.render('user_albums', {
+      title: user.name + "'s Albums",
+      userAlbums
+    });
+  }
 });
 
 // Photos on album route
 app.get('/albums/:albumId/photos', (req, res) => {
   let album = fakePhotos.filter(a => a.albumId === parseInt(req.params.albumId));
+  const photos = fakeAlbums.find(a => a.id === album[0].albumId);
+  const user = fakeUsers.find(u => u.id === photos.userId);
   if (!album) res.status(404).send('The album with the given ID was not found.');
   
   res.render('view_photos', {
-    title: 'Trends Exam - View Photos',
+    title: user.name + "'s Album (" + photos.id + ")",
     album
   });
 });
@@ -120,22 +139,40 @@ app.get('/albums/:albumId/photos', (req, res) => {
 // Comments route
 app.get('/posts/:postId/comments', (req, res) => {
   const comms = fakeComm.filter(c => c.postId === parseInt(req.params.postId));
+  const post = fakePosts.find(p => p.id === parseInt(req.params.postId));
+  const postedBy = fakeUsers.find(u => u.id === post.userId);
   if (comms.length == 0) res.status(404).send('The post with the given ID was not found.');
 
   res.render('view_comments', {
-    title: 'Trends Exam - View Comments',
+    title: "Post " + post.id + " - Comments",
+    post,
     comms,
+    postedBy,
     fakeUsers
   });
 });
 
 // Todos route
 app.get('/todos', (req, res) => {
-  res.render('todos', {
-    title: 'Trends Exam - Todos',
-    todos: fakeTodos,
-    fakeUsers
-  });
+  var query = req.query.userId;
+  if(query == '') {
+    res.status(404).send('Not Found.');
+  } else if(!req.query.userId) {
+    res.render('todos', {
+      title: 'Todos',
+      todos: fakeTodos,
+      fakeUsers
+    });
+  } else {
+    let userTodos = fakeTodos.filter(t => t.userId === parseInt(req.query.userId));
+    const user = fakeUsers.find(u => u.id === userTodos[0].userId);
+    if (userTodos.length == 0) res.status(404).send('The post with the given user ID was not found.');
+
+    res.render('user_todos', {
+      title: user.name + "'s Todos",
+      userTodos
+    });
+  }
 });
 
 // Invalid URL route
@@ -145,7 +182,6 @@ app.all('*', function(req, res) {
   });
 });
 
-
-const PORT = process.env.PORT || 3000;
-
+// Port
+const PORT = process.env.PORT || 6565;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}...`));

@@ -1,10 +1,28 @@
 extends layout
 
 block content
-  h1.text-center= title
-    h3= user.name
-    h5= user.username + ' - ' + user.email + ' / Visit my website: ' + user.website
-      h5= `Contact: ${user.phone}`
-      p= `Lives in ${user.address.suite}, ${user.address.street}, ${user.address.city}, ${user.address.zipcode}` 
-      p= `Works at ${user.company.name}, ${user.company.catchPhrase}, ${user.company.bs}`
-      a(href='/posts?userId=' + user.id) View posts..
+  body.cover(style="color: #444444; text-align: left")
+  div.page-grid-col
+  h1(style="letter-spacing: 2px" data-aos="zoom-in")= title
+    i.fas.fa-user(style="margin-left: 12px; color: #1da1f2" data-aos="fade-left" data-aos-duration="800")
+    p(style="padding: 0; font-size: 0.4em; letter-spacing: normal") Fetched from <a class="ahref" target="_blank" href="https://jsonplaceholder.typicode.com/users">https://jsonplaceholder.typicode.com/users/:id</a>
+  div.board(data-aos="fade-up" data-aos-duration="800")
+    div.card-content
+      a.ahref=user.name
+      p(style="padding-bottom: 0")= `Username: ${user.username}`
+      p(style="padding: 0")= `Email: ${user.email}`
+      p(style="padding: 0")= `Website: ${user.website}`
+      p(style="padding: 0")= `Contact: ${user.phone}`
+      p(style="padding: 0")= `Address: ${user.address.suite}, ${user.address.street}, ${user.address.city}, ${user.address.zipcode}`
+      p(style="padding: 0")= `Geolocation: ${user.address.geo.lat} LAT, ${user.address.geo.lng} LNG` 
+      p(style="padding: 0")= `Workplace: ${user.company.name}, ${user.company.catchPhrase}, ${user.company.bs}`
+      h3(style="padding: 0; padding-top: 25px").card-title: a.btn-view(href='/posts?userId=' + user.id) View posts <i class="fas fa-arrow-right"></i>
+      h3(style="padding: 0; padding-top: 5px").card-title: a.btn-view(href='/todos?userId=' + user.id) View todos <i class="fas fa-arrow-right"></i>
+      h3(style="padding: 0; padding-top: 5px").card-title: a.btn-view(href='/albums?userId=' + user.id) View albums <i class="fas fa-arrow-right"></i>
+      
+  footer(style="background: #f3f3f3")#main-footer
+    div Copyright &copy; Juan Miguel Ladisla 
+    div Trends and Technologies Inc.
+    div(style="font-size: 0.8em; margin-top: 1em") Made with 
+      i.fab.fa-node-js(style="color: #68a063; font-size: 1.5em")
+    div(style="font-size: 0.8em") ExpressJS and CSS3
