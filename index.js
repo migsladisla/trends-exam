@@ -56,7 +56,7 @@ app.get('/users', (req, res) => {
 // Single user route
 app.get('/users/:id', (req, res) => {
   let user = fakeUsers.find(u => u.id === parseInt(req.params.id));
-  if (!user) res.status(404).send('The user with the given ID was not found.');
+  if (!user) res.render('404', { title: 'Error 404: The user with the given ID was not found.' });
   
   res.render('view_user', {
     title: user.name + "'s Info",
@@ -68,7 +68,7 @@ app.get('/users/:id', (req, res) => {
 app.get('/posts', (req, res) => {
   var query = req.query.userId;
   if(query == '') {
-    res.status(404).send('Not Found.');
+    res.render('404', { title: 'Error 404: Not found.' });
   } else if(!req.query.userId) {
     res.render('posts', {
       title: 'Posts',
@@ -77,9 +77,9 @@ app.get('/posts', (req, res) => {
     });
   } else {
     let userPosts = fakePosts.filter(u => u.userId === parseInt(req.query.userId));
+    if (userPosts.length == 0) res.render('404', { title: 'Error 404: The user with the given ID was not found.' });
+    
     const user = fakeUsers.find(u => u.id === userPosts[0].userId);
-    if (userPosts.length == 0) res.status(404).send('The post with the given user ID was not found.');
-
     res.render('user_posts', {
       title: user.name + "'s Posts",
       userPosts
@@ -90,9 +90,9 @@ app.get('/posts', (req, res) => {
 // Single post route
 app.get('/posts/:id', (req, res) => {
   const post = fakePosts.find(p => p.id === parseInt(req.params.id));
-  const user = fakeUsers.find(p => p.id === post.userId);
-  if (!post) res.status(404).send('The post with the given ID was not found.');
+  if (!post) res.render('404', { title: 'Error 404: The post with the given ID was not found.' });
   
+  const user = fakeUsers.find(p => p.id === post.userId);
   res.render('view_post', {
     title: user.name + "'s Post",
     post,
@@ -113,9 +113,9 @@ app.get('/albums', (req, res) => {
     });
   } else {
     let userAlbums = fakeAlbums.filter(a => a.userId === parseInt(req.query.userId));
+    if (userAlbums.length == 0) res.render('404', { title: 'Error 404: The user with the given ID was not found.' });
+    
     const user = fakeUsers.find(u => u.id === userAlbums[0].userId);
-    if (userAlbums.length == 0) res.status(404).send('The post with the given user ID was not found.');
-
     res.render('user_albums', {
       title: user.name + "'s Albums",
       userAlbums
@@ -126,10 +126,10 @@ app.get('/albums', (req, res) => {
 // Photos on album route
 app.get('/albums/:albumId/photos', (req, res) => {
   let album = fakePhotos.filter(a => a.albumId === parseInt(req.params.albumId));
+  if (album.length == 0) res.render('404', { title: 'Error 404: The album with the given ID was not found.' });
+  
   const photos = fakeAlbums.find(a => a.id === album[0].albumId);
   const user = fakeUsers.find(u => u.id === photos.userId);
-  if (!album) res.status(404).send('The album with the given ID was not found.');
-  
   res.render('view_photos', {
     title: user.name + "'s Album (" + photos.id + ")",
     album
@@ -139,10 +139,10 @@ app.get('/albums/:albumId/photos', (req, res) => {
 // Comments route
 app.get('/posts/:postId/comments', (req, res) => {
   const comms = fakeComm.filter(c => c.postId === parseInt(req.params.postId));
+  if (comms.length == 0) res.render('404', { title: 'Error 404: The post with the given ID was not found.' });
+  
   const post = fakePosts.find(p => p.id === parseInt(req.params.postId));
   const postedBy = fakeUsers.find(u => u.id === post.userId);
-  if (comms.length == 0) res.status(404).send('The post with the given ID was not found.');
-
   res.render('view_comments', {
     title: "Post " + post.id + " - Comments",
     post,
@@ -150,6 +150,29 @@ app.get('/posts/:postId/comments', (req, res) => {
     postedBy,
     fakeUsers
   });
+});
+
+// Comments on post route
+app.get('/comments', (req, res) => {
+  var query = req.query.postId;
+  if(query == '') {
+    res.render('404', { title: 'Error 404: Page not found.' });
+  } else if (!query) {
+    res.render('404', { title: 'Error 404: Page not found.' });
+  } else {
+    const comms = fakeComm.filter(c => c.postId === parseInt(req.query.postId));
+    if (comms.length == 0) res.render('404', { title: 'Error 404: The post with the given ID was not found.' });
+
+    const post = fakePosts.find(p => p.id === parseInt(req.query.postId));
+    const postedBy = fakeUsers.find(u => u.id === post.userId);
+    res.render('view_post_comments', {
+      title: "Post " + post.id + " - Comments",
+      post,
+      comms,
+      postedBy,
+      fakeUsers
+    });
+  }
 });
 
 // Todos route
@@ -165,9 +188,9 @@ app.get('/todos', (req, res) => {
     });
   } else {
     let userTodos = fakeTodos.filter(t => t.userId === parseInt(req.query.userId));
+    if (userTodos.length == 0) res.render('404', { title: 'Error 404: The user with the given ID was not found.' });
+    
     const user = fakeUsers.find(u => u.id === userTodos[0].userId);
-    if (userTodos.length == 0) res.status(404).send('The post with the given user ID was not found.');
-
     res.render('user_todos', {
       title: user.name + "'s Todos",
       userTodos
@@ -178,7 +201,7 @@ app.get('/todos', (req, res) => {
 // Invalid URL route
 app.all('*', function(req, res) {
   res.render('404', {
-    title: 'Error 404'
+    title: 'Error 404: The todos with the given ID was not found.'
   });
 });
 

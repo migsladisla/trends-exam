@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  h1.text-center= title
+  body.cover(style="color: #444444; text-align: left")
+  div.page-grid-col
+  h1(style="letter-spacing: 2px" data-aos="zoom-in")= title
+    i.fas.fa-times-circle(style="margin-left: 12px; color: #bd081c" data-aos="fade-left" data-aos-duration="800")
