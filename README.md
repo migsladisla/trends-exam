@@ -1,2 +1,3 @@
-# Website made with NodeJS and ExpressJS
-Custom website that fetches data from an online fake API, returning it with my own design
+# Simple website built in Node.js and Express.js
+
+Consumes API from [jsonplaceholder](https://jsonplaceholder.typicode.com/) fake online REST API
